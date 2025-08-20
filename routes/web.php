@@ -3,6 +3,13 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\AdminReservationController;
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/reservations', [AdminReservationController::class, 'index'])->name('admin.reservations.index');
+    Route::post('/admin/reservations/{id}', [AdminReservationController::class, 'update'])->name('admin.reservations.update');
+});
+
 
 Route::middleware(['auth'])->group(function () {
 
@@ -14,7 +21,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
 });
 
 Route::get('/dashboard', function () {
