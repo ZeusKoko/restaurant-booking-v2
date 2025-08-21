@@ -420,7 +420,7 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
-                    <a href="#" class="text-zeupreme-orange font-heading text-3xl">Zeupreme Deli</a>
+                    <a href="#" class="text-zeupreme-orange font-heading text-3xl">Zeupreme Deli🍔</a>
                     <p class="text-gray-400 mt-2">Where Flavor Meets Passion</p>
                 </div>
                 <div class="text-center md:text-right">
