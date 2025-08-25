@@ -1,29 +1,29 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin - All Reservations') }}
+        <h2 class="font-bold text-2xl text-orange-600 tracking-wide">
+            🍴 {{ __('Zeupreme Deli - Reservations') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12 bg-gray-100 min-h-screen">
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+            <div class="bg-white overflow-hidden shadow-x1 rounded-2x1 p-6">
                 @if ($reservations->count() > 0)
-                    <table class="table-auto w-full">
+                    <table class="w-full border-collapse rounded-lg overflow-hidden shadow-lg">
                         <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>User</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Guests</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                            <tr class="bg-gradient-to-r from-orange-500 to-red-500 text-white text-left text-sm uppercase">
+                                <th class="px-4 py-3">ID</th>
+                                <th class="px-4 py-3">User</th>
+                                <th class="px-4 py-3">Date</th>
+                                <th class="px-4 py-3">Time</th>
+                                <th class="px-4 py-3">Guests</th>
+                                <th class="px-4 py-3">Status</th>
+                                <th class="px-4 py-3">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="divide-y divide-gray-200 text-gray-700">
                             @foreach ($reservations as $reservation)
-                                <tr>
+                                <tr class="hover:bg-orange-50 transition">
                                     <td>{{ $reservation->id }}</td>
                                     <td>{{ $reservation->user_id }}</td>
                                     <td>{{ $reservation->date }}</td>
