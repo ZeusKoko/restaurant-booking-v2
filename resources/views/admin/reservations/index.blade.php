@@ -7,7 +7,7 @@
 
     <div class="py-12 bg-gray-100 min-h-screen">
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-x1 rounded-2x1 p-6">
+            <div class="bg-white overflow-hidden shadow-xl rounded-2xl p-6">
                 @if ($reservations->count() > 0)
                     <table class="w-full border-collapse rounded-lg overflow-hidden shadow-lg">
                         <thead>
@@ -24,21 +24,32 @@
                         <tbody class="divide-y divide-gray-200 text-gray-700">
                             @foreach ($reservations as $reservation)
                                 <tr class="hover:bg-orange-50 transition">
-                                   <td class="px-4 py-3 font-semibold text-gray-900">{{ $reservation->id }}</td>
-                                                                        <td class="px-4 py-3">{{ $reservation->user_id }}</td>
+                                    <td class="px-4 py-3 font-semibold text-gray-900">{{ $reservation->id }}</td>
+                                    <td class="px-4 py-3">{{ $reservation->user_id }}</td>
                                     <td class="px-4 py-3">{{ $reservation->date }}</td>
                                     <td class="px-4 py-3">{{ $reservation->time }}</td>
                                     <td class="px-4 py-3">{{ $reservation->guests }}</td>
-                                    <td class="px-4 py-3">{{ $reservation->status }}</td>
-                                    <td>
-                                        <form action="{{ route('admin.reservations.update', $reservation->id) }}" method="POST">
+                                    <td class="px-4 py-3">
+                                        <span class="px-2 py-1 rounded-lg text-xs 
+                                            @if($reservation->status === 'approved') bg-green-100 text-green-700 
+                                            @elseif($reservation->status === 'declined') bg-red-100 text-red-700 
+                                            @else bg-yellow-100 text-yellow-700 
+                                            @endif">
+                                            {{ ucfirst($reservation->status) }}
+                                        </span>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <form action="{{ route('admin.reservations.update', $reservation->id) }}" method="POST" class="flex items-center gap-2">
                                             @csrf
-                                            <select name="status" class="rounded-1g border-gray-300 text-sm focus:ring-orange-500 focus:border-orange-500">
+                                            <select name="status" class="rounded-lg border-gray-300 text-sm focus:ring-orange-500 focus:border-orange-500">
                                                 <option value="pending" {{ $reservation->status == 'pending' ? 'selected' : '' }}>Pending</option>
                                                 <option value="approved" {{ $reservation->status == 'approved' ? 'selected' : '' }}>Approve</option>
                                                 <option value="declined" {{ $reservation->status == 'declined' ? 'selected' : '' }}>Decline</option>
                                             </select>
-                                            <button type="submit"class="px-3 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded-1g text-sm transition">Update</button>
+                                            <button type="submit"
+                                                class="px-3 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-sm transition">
+                                                Update
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>
