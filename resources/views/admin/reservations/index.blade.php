@@ -24,21 +24,21 @@
                         <tbody class="divide-y divide-gray-200 text-gray-700">
                             @foreach ($reservations as $reservation)
                                 <tr class="hover:bg-orange-50 transition">
-                                    <td>{{ $reservation->id }}</td>
-                                    <td>{{ $reservation->user_id }}</td>
-                                    <td>{{ $reservation->date }}</td>
-                                    <td>{{ $reservation->time }}</td>
-                                    <td>{{ $reservation->guests }}</td>
-                                    <td>{{ $reservation->status }}</td>
+                                   <td class="px-4 py-3 font-semibold text-gray-900">{{ $reservation->id }}</td>
+                                                                        <td class="px-4 py-3">{{ $reservation->user_id }}</td>
+                                    <td class="px-4 py-3">{{ $reservation->date }}</td>
+                                    <td class="px-4 py-3">{{ $reservation->time }}</td>
+                                    <td class="px-4 py-3">{{ $reservation->guests }}</td>
+                                    <td class="px-4 py-3">{{ $reservation->status }}</td>
                                     <td>
                                         <form action="{{ route('admin.reservations.update', $reservation->id) }}" method="POST">
                                             @csrf
-                                            <select name="status">
+                                            <select name="status" class="rounded-1g border-gray-300 text-sm focus:ring-orange-500 focus:border-orange-500">
                                                 <option value="pending" {{ $reservation->status == 'pending' ? 'selected' : '' }}>Pending</option>
                                                 <option value="approved" {{ $reservation->status == 'approved' ? 'selected' : '' }}>Approve</option>
                                                 <option value="declined" {{ $reservation->status == 'declined' ? 'selected' : '' }}>Decline</option>
                                             </select>
-                                            <button type="submit">Update</button>
+                                            <button type="submit"class="px-3 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded-1g text-sm transition">Update</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -46,7 +46,9 @@
                         </tbody>
                     </table>
                 @else
-                    No reservations yet.
+                    <div class="text-center py-12 text-gray-500">
+                        🍽️ No reservations yet.
+                    </div>
                 @endif
             </div>
         </div>
