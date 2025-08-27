@@ -58,7 +58,7 @@
                     </table>
                 @else
                     <div class="text-center py-12 text-gray-500">
-                        🍽️ No reservations yet.
+                        🍽️ No reservations yet!
                     </div>
                 @endif
             </div>
