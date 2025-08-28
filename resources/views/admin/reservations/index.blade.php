@@ -1,8 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-bold text-2xl text-orange-600 tracking-wide">
-            🍴 {{ __('Zeupreme Deli - Reservations') }}
-        </h2>
+        <div class="text-center space-y-2">
+            <h2 class="text-3xl font-extrabold text-orange-600 tracking-tight">
+                {{ __('Zeupreme Deli - Reservations') }}
+            </h2>
+        </div>
     </x-slot>
 
     <div class="py-12 bg-gray-100 min-h-screen">
@@ -25,7 +27,18 @@
                             @foreach ($reservations as $reservation)
                                 <tr class="hover:bg-orange-50 transition">
                                     <td class="px-4 py-3 font-semibold text-gray-900">{{ $reservation->id }}</td>
-                                    <td class="px-4 py-3">{{ $reservation->user_id }}</td>
+
+                                    <!-- ✅ User Name + Email -->
+                                    <td class="px-4 py-3">
+                                        @if($reservation->user)
+                                            <span class="font-medium text-gray-900">{{ $reservation->user->name }}</span>
+                                            <br>
+                                            <span class="text-sm text-gray-500">{{ $reservation->user->email }}</span>
+                                        @else
+                                            <span class="text-gray-400 italic">Unknown User</span>
+                                        @endif
+                                    </td>
+
                                     <td class="px-4 py-3">{{ $reservation->date }}</td>
                                     <td class="px-4 py-3">{{ $reservation->time }}</td>
                                     <td class="px-4 py-3">{{ $reservation->guests }}</td>

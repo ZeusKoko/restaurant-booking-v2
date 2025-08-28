@@ -15,5 +15,12 @@ class Reservation extends Model
     'contact',
     'status',
 ];
+// app/Models/Reservation.php
+
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
 
 }
+
