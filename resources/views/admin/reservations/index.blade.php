@@ -7,7 +7,7 @@
         </div>
     </x-slot>
 
-    <div class="py-12 bg-gray-100 min-h-screen">
+    <div class="py-10" style="background:#FFE9D4; min-height:100vh;">
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl rounded-2xl p-6">
                 @if ($reservations->count() > 0)

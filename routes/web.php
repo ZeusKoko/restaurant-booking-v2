@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\AdminReservationController;
 
+Route::resource('reservations', ReservationController::class);
+
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/reservations', [AdminReservationController::class, 'index'])->name('admin.reservations.index');
     Route::post('/admin/reservations/{id}', [AdminReservationController::class, 'update'])->name('admin.reservations.update');
